@@ -6,7 +6,7 @@ import (
 	"github.com/arrannn/rayout/fonts"
 )
 
-func GorayTheme() *Theme {
+func RayoutTheme() *Theme {
 	return &Theme{
 		// Fonts
 		FontRegular: Font{

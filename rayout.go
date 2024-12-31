@@ -59,7 +59,7 @@ type Layout struct {
 
 func NewLayout(rect rl.Rectangle) *Layout {
 	if globalTheme == nil {
-		SetGlobalTheme(themes.GorayTheme())
+		SetGlobalTheme(themes.RayoutTheme())
 	}
 	return &Layout{rect: rect}
 }

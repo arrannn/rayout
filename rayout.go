@@ -1,8 +1,24 @@
 package rayout
 
 import (
+	"github.com/arrannn/rayout/themes"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
+
+var globalTheme *themes.Theme
+
+func SetGlobalTheme(theme *themes.Theme) {
+	globalTheme = theme
+}
+
+func GetGlobalTheme() *themes.Theme {
+	return globalTheme
+}
+
+type Widget interface {
+	Update(bounds rl.Rectangle) rl.Rectangle
+	Draw()
+}
 
 type App struct {
 	*Layout
@@ -34,4 +50,29 @@ func (a *App) Run(content Widget) {
 
 func (a *App) Close() {
 	rl.CloseWindow()
+}
+
+type Layout struct {
+	rect    rl.Rectangle
+	Content Widget
+}
+
+func NewLayout(rect rl.Rectangle) *Layout {
+	if globalTheme == nil {
+		SetGlobalTheme(themes.GorayTheme())
+	}
+	return &Layout{rect: rect}
+}
+
+func (l *Layout) Update() {
+	l.Content.Update(l.rect)
+}
+
+func (l *Layout) Draw() {
+	l.Content.Draw()
+}
+
+func (l *Layout) UpdateAndDraw() {
+	l.Update()
+	l.Draw()
 }

@@ -1,7 +1,7 @@
 package components
 
-import "github.com/arrannn/rayout/ui"
+import "github.com/arrannn/rayout"
 
-func Column(children ...ui.Widget) *ui.Column {
-	return &ui.Column{Children: children}
+func Column(children ...rayout.Widget) *rayout.Column {
+	return &rayout.Column{Children: children}
 }

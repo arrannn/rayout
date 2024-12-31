@@ -1,12 +1,12 @@
 package components
 
 import (
-	"github.com/arrannn/rayout/ui"
+	"github.com/arrannn/rayout"
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type TextInput struct {
-	*ui.Box
+	*rayout.Box
 	Value    *string // Pointer to the string value we're modifying
 	MaxChars int
 	// letterCount  int
@@ -16,17 +16,17 @@ type TextInput struct {
 
 func NewTextInput(value *string, maxChars int) *TextInput {
 	tb := &TextInput{
-		Box: &ui.Box{
-			BackgroundColor: &ui.GetGlobalTheme().Surface,
+		Box: &rayout.Box{
+			BackgroundColor: &rayout.GetGlobalTheme().Surface,
 			BorderThick:     1,
 			PaddingTop:      8,
 			PaddingRight:    5,
 			PaddingBottom:   8,
 			PaddingLeft:     5,
 			AutoHeight:      true,
-			Child: &ui.Text{
+			Child: &rayout.Text{
 				Text: *value,
-				Font: &ui.GetGlobalTheme().FontBold.Font,
+				Font: &rayout.GetGlobalTheme().FontBold.Font,
 			},
 		},
 		Value:    value,
@@ -39,14 +39,14 @@ func NewTextInput(value *string, maxChars int) *TextInput {
 	return tb
 }
 
-func (t *TextInput) handleInput(b *ui.Box) {
+func (t *TextInput) handleInput(b *rayout.Box) {
 	// Check if clicked to activate
 	if rl.IsMouseButtonPressed(rl.MouseButtonLeft) {
 		t.isActive = t.IsHovered()
 	}
 
 	if t.isActive {
-		b.BorderColor = &ui.GetGlobalTheme().BorderFocus
+		b.BorderColor = &rayout.GetGlobalTheme().BorderFocus
 		rl.SetMouseCursor(rl.MouseCursorIBeam)
 
 		// Handle character input
@@ -63,11 +63,11 @@ func (t *TextInput) handleInput(b *ui.Box) {
 			*t.Value = (*t.Value)[:len(*t.Value)-1]
 		}
 
-		b.Child.(*ui.Text).SetText(*t.Value)
+		b.Child.(*rayout.Text).SetText(*t.Value)
 
 		t.frameCounter++
 	} else {
-		b.BorderColor = &ui.GetGlobalTheme().BorderLight
+		b.BorderColor = &rayout.GetGlobalTheme().BorderLight
 		t.frameCounter = 0
 		rl.SetMouseCursor(rl.MouseCursorDefault)
 	}
@@ -79,7 +79,7 @@ func (t *TextInput) Draw() {
 
 	// Draw cursor if active
 	if t.isActive && ((t.frameCounter/20)%2) == 0 {
-		textWidget := t.Box.Child.(*ui.Text)
+		textWidget := t.Box.Child.(*rayout.Text)
 		cursorX := t.Box.ContentBox.X + float32(rl.MeasureTextEx(*textWidget.Font, *t.Value, *textWidget.Size, *textWidget.Spacing).X)
 		rl.DrawTextEx(*textWidget.Font, "_", rl.Vector2{X: cursorX, Y: t.Box.ContentBox.Y}, *textWidget.Size, *textWidget.Spacing, *textWidget.Color)
 	}

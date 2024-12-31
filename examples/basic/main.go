@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/arrannn/rayout"
 	"github.com/arrannn/rayout/components"
-	rayout "github.com/arrannn/rayout/ui"
 )
 
 func main() {

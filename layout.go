@@ -1,4 +1,4 @@
-package ui
+package rayout
 
 import (
 	"github.com/arrannn/rayout/themes"

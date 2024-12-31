@@ -1,7 +1,7 @@
 package components
 
-import "github.com/arrannn/rayout/ui"
+import "github.com/arrannn/rayout"
 
-func Label(text string) *ui.Text {
-	return &ui.Text{Text: text}
+func Label(text string) *rayout.Text {
+	return &rayout.Text{Text: text}
 }

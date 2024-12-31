@@ -1,15 +1,15 @@
 package components
 
-import "github.com/arrannn/rayout/ui"
+import "github.com/arrannn/rayout"
 
-func Spacer(width, height float32) *ui.Spacer {
-	return &ui.Spacer{Width: width, Height: height}
+func Spacer(width, height float32) *rayout.Spacer {
+	return &rayout.Spacer{Width: width, Height: height}
 }
 
-func HorizontalSpacer(width float32) *ui.Spacer {
-	return &ui.Spacer{Width: width}
+func HorizontalSpacer(width float32) *rayout.Spacer {
+	return &rayout.Spacer{Width: width}
 }
 
-func VerticalSpacer(height float32) *ui.Spacer {
-	return &ui.Spacer{Height: height}
+func VerticalSpacer(height float32) *rayout.Spacer {
+	return &rayout.Spacer{Height: height}
 }

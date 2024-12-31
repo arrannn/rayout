@@ -1,6 +1,8 @@
 # rayout
 A lightweight cross-platform UI toolkit for Go powered by Raylib
 
+Still in early development and is likely to change.
+
 ```go
 package main
 

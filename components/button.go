@@ -5,7 +5,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-func TextButton(text string, onClick func()) rayout.Widget {
+func Button(text string, onClick func()) rayout.Widget {
 	box := &rayout.Box{
 		BackgroundColor: &rayout.GetGlobalTheme().Surface,
 		BorderColor:     &rayout.GetGlobalTheme().BorderDark,

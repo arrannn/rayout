@@ -21,9 +21,9 @@ func main() {
 		components.Column(
 			components.Label("This is a label"),
 			components.VerticalSpacer(5),
-			components.TextButton("Click me", func() { fmt.Println("Clicked") }),
+			components.Button("Click me", func() { fmt.Println("Clicked") }),
 			components.VerticalSpacer(5),
-			components.NewTextInput(&SomeState, 200),
+			components.InputText(&SomeState, 200),
 		),
 	)
 }

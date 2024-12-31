@@ -5,7 +5,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-type TextInput struct {
+type InputTextComponent struct {
 	*rayout.Box
 	Value    *string // Pointer to the string value we're modifying
 	MaxChars int
@@ -14,8 +14,8 @@ type TextInput struct {
 	frameCounter int
 }
 
-func NewTextInput(value *string, maxChars int) *TextInput {
-	tb := &TextInput{
+func InputText(value *string, maxChars int) *InputTextComponent {
+	tb := &InputTextComponent{
 		Box: &rayout.Box{
 			BackgroundColor: &rayout.GetGlobalTheme().Surface,
 			BorderThick:     1,
@@ -39,7 +39,7 @@ func NewTextInput(value *string, maxChars int) *TextInput {
 	return tb
 }
 
-func (t *TextInput) handleInput(b *rayout.Box) {
+func (t *InputTextComponent) handleInput(b *rayout.Box) {
 	// Check if clicked to activate
 	if rl.IsMouseButtonPressed(rl.MouseButtonLeft) {
 		t.isActive = t.IsHovered()
@@ -73,7 +73,7 @@ func (t *TextInput) handleInput(b *rayout.Box) {
 	}
 }
 
-func (t *TextInput) Draw() {
+func (t *InputTextComponent) Draw() {
 	// First draw the base box
 	t.Box.Draw()
 
